@@ -5,8 +5,8 @@ mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 
 mphands = mp.solutions.hands
- 
-cap = cv2.VideoCapture(0) 
+
+cap = cv2.VideoCapture(0)
 hands = mphands.Hands()
 
 while True:
@@ -21,5 +21,11 @@ while True:
                 hand_landmarks, mphands.HAND_CONNECTIONS
             )
     cv2.imshow('Handtracker', image)
-    cv2.waitKey(1)
-            
+    
+    # Check for 'q' key press to quit
+    key = cv2.waitKey(1)
+    if key == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
